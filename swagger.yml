@@ -1,0 +1,90 @@
+openapi: 3.0.0
+info:
+  description: Registro de pacientes
+  version: 1.0.0
+  title: Registro
+paths:
+  /patient:
+    post:
+      tags:
+        - patient
+      summary: Registrar paciente
+      requestBody:
+        description: Metodo que permite registrar pacientes
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatientRequest'
+      responses:
+        '200':
+          description: Paciente registrado
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PatientResponse'
+        '500':
+          description: Request Invalido
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+components:
+  schemas:
+    PatientRequest:
+      required:
+        - id
+        - firstname
+        - lastname
+        - email
+        - phone
+      properties:
+        id:
+          type: string
+          example: "14564088-4"
+          maxLength: 20
+        firstname:
+          type: string
+          example: emanuel
+          minLength: 1
+          maxLength: 255
+        lastname: 
+          type: string
+          example: "Pantoja"
+          minLength: 1
+          maxLength: 255
+        email: 
+          type: string
+          example: "emanuelpantoja12@gmail.com"
+          minLength: 1
+          maxLength: 255
+        phone:
+          type: string
+          example: 56988123222
+          minLength: 9
+          maxLength: 20
+    PatientResponse:
+      required: 
+        - "code"
+        - "message"
+      properties: 
+        code: 
+          type: "number"
+          example: 200
+        message: 
+          type: "string"
+          example: "Paciente registrado"
+    ErrorResponse:
+      required: 
+        - "code"
+        - "message"
+      properties: 
+        statusCode: 
+          type: "number"
+          example: 500
+        error:
+          type: string
+          example: Bad Request
+        message:
+          type: "string"
+          example: "paciente registrado"
