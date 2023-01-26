@@ -12,6 +12,13 @@ export class PatientService {
     private exceptions: ExceptionsService,
   ){}
 
+  async findOne(patient: CreatePatientDto) {
+    return await this.databaseService.patients.findOne({where:[
+      {email:patient.email},
+      {id:patient.id}
+    ]})
+  }
+
   async create(patient: CreatePatientDto) {
     return await this.databaseService.patients.create(patient)
   }

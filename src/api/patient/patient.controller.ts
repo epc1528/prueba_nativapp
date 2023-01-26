@@ -10,6 +10,8 @@ export class PatientController {
 
   @Post()
   async create(@Body() createPatientDto: CreatePatientDto) {
+    const patientsFind = await this.patientService.findOne(createPatientDto);
+    if(patientsFind) return plainToClass(PatientCreateOutput,{message:"Id o email registrado", code:500})
     const patients = await this.patientService.create(createPatientDto);
     return plainToClass(PatientCreateOutput, {message: "Patient saved", code: 200})
   }
