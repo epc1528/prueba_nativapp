@@ -31,6 +31,19 @@
 ```bash
 $ npm install
 ```
+## build
+
+```bash
+  $ npm run build
+```
+## run containers
+
+```bash
+  $ docker compose up
+```
+
+## swagger
+para revisar el endpoint pueden hacerlo atravez de swagger con la siguiente ruta http://{host}/api-docs
 
 ## Running the app
 
@@ -43,19 +56,6 @@ $ npm run start:dev
 
 # production mode
 $ npm run start:prod
-```
-
-## Test
-
-```bash
-# unit tests
-$ npm run test
-
-# e2e tests
-$ npm run test:e2e
-
-# test coverage
-$ npm run test:cov
 ```
 
 ## Support
